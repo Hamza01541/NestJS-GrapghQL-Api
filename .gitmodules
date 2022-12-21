@@ -1,0 +1,3 @@
+[submodule "greenomy-common"]
+	path = greenomy-common
+	url = git@github.com:Greenomy/greenomy-common.git

@@ -1,0 +1,973 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BaseAmountDto {
+  debt: Float!
+  equity: Float!
+}
+
+type BankingBookAmountDto {
+  debt: Float!
+  equity: Float!
+  loan: Float!
+}
+
+type BankingBookAmountAvailableDto {
+  euNonNFRD: BankingBookAmountDto!
+  nonEu: BankingBookAmountDto!
+  household: Float!
+  localGovernment: Float!
+  other: Float!
+}
+
+type BankingBookFinancialAssetDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  screeningId: String
+  reportRequested: Boolean
+  screeningScore: Float
+}
+
+enum FinancialAssetType {
+  EQUITY
+  DEBT
+  GUARANTEES
+  LOAN_ADVANCE
+  REPOSESSED_REAL_ESTATE
+  CASH
+  FUND
+}
+
+enum CounterPartyType {
+  CREDIT_INSTITUTION
+  INVESTMENT_FIRM
+  MANAGEMENT_COMPANY
+  INSURANCE_UNDERTAKING
+  NON_FINANCIAL_CORPORATE
+  HOUSEHOLD
+  LOCAL_GOUVERNMENT
+  REPOSESSED_REAL_ESTATE
+  NON_FINANCIAL_CORPORATE_NO_NFRD
+  NON_FINANCIAL_CORPORATE_NO_NFRD_LOAN
+  NO_COUNTER_PARTY
+  FINANCIAL_CORPORATE_NO_NFRD
+}
+
+enum CountryCodesComponentEnum {
+  AF
+  AX
+  AL
+  DZ
+  AS
+  AD
+  AO
+  AI
+  AQ
+  AG
+  AR
+  AM
+  AW
+  AU
+  AT
+  AZ
+  BS
+  BH
+  BD
+  BB
+  BY
+  BE
+  BZ
+  BJ
+  BM
+  BT
+  BO
+  BA
+  BW
+  BV
+  BR
+  IO
+  BN
+  BG
+  BF
+  BI
+  KH
+  CM
+  CA
+  CV
+  KY
+  CF
+  TD
+  CL
+  CN
+  CX
+  CC
+  CO
+  KM
+  CG
+  CD
+  CK
+  CR
+  CI
+  HR
+  CU
+  CY
+  CZ
+  DK
+  DJ
+  DM
+  DO
+  EC
+  EG
+  SV
+  GQ
+  ER
+  EE
+  ET
+  FK
+  FO
+  FJ
+  FI
+  FR
+  GF
+  PF
+  TF
+  GA
+  GM
+  GE
+  DE
+  GH
+  GI
+  GR
+  GL
+  GD
+  GP
+  GU
+  GT
+  GG
+  GN
+  GW
+  GY
+  HT
+  HM
+  VA
+  HN
+  HK
+  HU
+  IS
+  IN
+  ID
+  IR
+  IQ
+  IE
+  IM
+  IL
+  IT
+  JM
+  JP
+  JE
+  JO
+  KZ
+  KE
+  KI
+  KR
+  KW
+  KG
+  LA
+  LV
+  LB
+  LS
+  LR
+  LY
+  LI
+  LT
+  LU
+  MO
+  MK
+  MG
+  MW
+  MY
+  MV
+  ML
+  MT
+  MH
+  MQ
+  MR
+  MU
+  YT
+  MX
+  FM
+  MD
+  MC
+  MN
+  ME
+  MS
+  MA
+  MZ
+  MM
+  NA
+  NR
+  NP
+  NL
+  AN
+  NC
+  NZ
+  NI
+  NE
+  NG
+  NU
+  NF
+  MP
+  NO
+  OM
+  PK
+  PW
+  PS
+  PA
+  PG
+  PY
+  PE
+  PH
+  PN
+  PL
+  PT
+  PR
+  QA
+  RE
+  RO
+  RU
+  RW
+  BL
+  SH
+  KN
+  LC
+  MF
+  PM
+  VC
+  WS
+  SM
+  ST
+  SA
+  SN
+  RS
+  SC
+  SL
+  SG
+  SK
+  SI
+  SB
+  SO
+  ZA
+  GS
+  ES
+  LK
+  SD
+  SR
+  SJ
+  SZ
+  SE
+  CH
+  SY
+  TW
+  TJ
+  TZ
+  TH
+  TL
+  TG
+  TK
+  TO
+  TT
+  TN
+  TR
+  TM
+  TC
+  TV
+  UG
+  UA
+  AE
+  GB
+  US
+  UM
+  UY
+  UZ
+  VU
+  VE
+  VN
+  VG
+  VI
+  WF
+  EH
+  YE
+  ZM
+  ZW
+  XK
+  KP
+  SS
+  SX
+  BQ
+  CW
+}
+
+type FinancialsDto {
+  value: Float!
+  currency: CurrencyTypeEnum
+}
+
+enum CurrencyTypeEnum {
+  eur
+  try
+  sek
+  ron
+  pln
+  huf
+  hrk
+  dkk
+  czk
+  chf
+  bgn
+  all
+  amd
+  azn
+  bam
+  byn
+  gbp
+  gel
+  isk
+  mdl
+  mkd
+  nok
+  rsd
+  rub
+  uah
+}
+
+type NonEUCounterpartiesDto {
+  total: FinancialsDto!
+  loanAdvance: FinancialsDto!
+  debtSecurity: FinancialsDto!
+  equityInstruments: FinancialsDto!
+}
+
+type BankingBookFormDataDto {
+  householdLoans: FinancialsDto!
+  governmentFinancing: FinancialsDto!
+  onDemand: FinancialsDto!
+  cashAssets: FinancialsDto!
+  otherAssets: FinancialsDto!
+  derivatives: FinancialsDto!
+  sme: NonEUCounterpartiesDto!
+  nonEUCounterparties: NonEUCounterpartiesDto!
+}
+
+type BankingBookDto {
+  financialAssets: [BankingBookFinancialAssetDto!]
+  formData: BankingBookFormDataDto
+  amountAvailable: BankingBookAmountAvailableDto
+}
+
+type CommissionBookAmountAvailableDto {
+  nonNFRD: Float!
+  other: Float!
+}
+
+type CommissionBookFinancialAssetDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  reportRequested: Boolean
+  financialServiceType: FinancialServiceTypeEnum
+  income: FinancialsDto
+}
+
+enum FinancialServiceTypeEnum {
+  SECURITIES_INSURANCES
+  SECURITITES_TRANSDER_ORDERS
+  SECURITIES_OTHER
+  CLEARING_AND_SETTLEMENT
+  CUSTODY_AND_OTHER
+  STRUCTURED_FINANCE
+  FEES
+  OTHER
+  PAYMENT_SERVICES
+}
+
+type CommissionBookFormDataDto {
+  totalRevenue: FinancialsDto!
+  counterpartiesIncome: FinancialsDto!
+}
+
+type CommissionBookDto {
+  financialAssets: [CommissionBookFinancialAssetDto!]
+  formData: CommissionBookFormDataDto
+  amountAvailable: CommissionBookAmountAvailableDto
+}
+
+type OffBalanceBookAmountAvailableDto {
+  total: FinancialsDto!
+  debtSecurity: FinancialsDto!
+  equityInstruments: FinancialsDto!
+}
+
+type OffBalanceBookFinancialAssetDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  reportRequested: Boolean
+  grossAmount: FinancialsDto!
+  guaranteeIsin: String
+}
+
+type OffBalanceBookAumDto {
+  total: FinancialsDto!
+  debtSecurity: FinancialsDto!
+  equityInstruments: FinancialsDto!
+}
+
+type OffBalanceBookFormDataDto {
+  financialGuarantees: FinancialsDto!
+  totalAuM: OffBalanceBookAumDto!
+}
+
+type OffBalanceBookDto {
+  amountAvailable: OffBalanceBookAmountAvailableDto
+  financialAssets: [OffBalanceBookFinancialAssetDto!]
+  formData: OffBalanceBookFormDataDto
+}
+
+type TradingBookAmountAvailableDto {
+  nonNFRD: BaseAmountDto!
+  other: Float!
+}
+
+type TradingBookFinancialAssetDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  reportRequested: Boolean
+}
+
+type EngineFileLinkDto {
+  _id: String!
+  accountId: String
+  mime: String!
+  fieldName: String!
+  indication: String
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type TradingBookFormAnswerDto {
+  less: AnswerEnum!
+  exceeds: AnswerEnum!
+}
+
+enum AnswerEnum {
+  YES
+  NO
+}
+
+type TradingBookTotalCoveredAssetDto {
+  total: FinancialsDto!
+  counterpartiesNoNfrd: FinancialsDto!
+  debtSecurity: FinancialsDto!
+  equityInstruments: FinancialsDto!
+}
+
+type TradingBookFormDataDto {
+  trends: String
+  investmentPolicy: String
+  potentialLimits: String
+  totalCoveredAsset: TradingBookTotalCoveredAssetDto
+  accountingDate: DateTime
+  files: [EngineFileLinkDto!]
+  institutionSize: TradingBookFormAnswerDto!
+  institutionSizeMarketRisk: TradingBookFormAnswerDto!
+}
+
+type TradingBookDto {
+  financialAssets: [TradingBookFinancialAssetDto!]
+  formData: TradingBookFormDataDto
+  amountAvailable: TradingBookAmountAvailableDto
+}
+
+type CIProfileDto {
+  _id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  country: CurrencyTypeEnum!
+  lei: String!
+  size: String!
+  currency: CurrencyTypeEnum
+  totalAssets: FinancialsDto
+  banksExposure: FinancialsDto
+  totalSovereignExposures: FinancialsDto
+  totalTradingBook: FinancialsDto
+  year: String!
+  bankingBook: BankingBookDto
+  tradingBook: TradingBookDto
+  offBalanceBook: OffBalanceBookDto
+  commissionBook: CommissionBookDto
+}
+
+type CreditInstitutionDto {
+  _id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
+  """get profile by year"""
+  profile(year: String!): CIProfileDto
+
+  """get profiles by years. If no arguments passed, return all profiles"""
+  profiles(years: [String!]!): [CIProfileDto!]
+}
+
+input BaseAmountInputDto {
+  debt: Float!
+  equity: Float!
+}
+
+input BBAmountInputDto {
+  debt: Float!
+  equity: Float!
+  loan: Float!
+}
+
+input BBAmountAvailableInputDto {
+  euNonNFRD: BBAmountInputDto!
+  nonEu: BBAmountInputDto!
+  household: Float!
+  localGovernment: Float!
+  other: Float!
+}
+
+input BBFinancialAssetInputDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  screeningId: String
+  reportRequested: Boolean
+  screeningScore: Float
+}
+
+input FinancialsInputDto {
+  value: Float!
+  currency: CurrencyTypeEnum
+}
+
+input NonEUCounterpartiesInputDto {
+  total: FinancialsInputDto!
+  loanAdvance: FinancialsInputDto!
+  debtSecurity: FinancialsInputDto!
+  equityInstruments: FinancialsInputDto!
+}
+
+input BBFormDataInputDto {
+  householdLoans: FinancialsInputDto!
+  governmentFinancing: FinancialsInputDto!
+  onDemand: FinancialsInputDto!
+  cashAssets: FinancialsInputDto!
+  otherAssets: FinancialsInputDto!
+  derivatives: FinancialsInputDto!
+  sme: NonEUCounterpartiesInputDto!
+  nonEUCounterparties: NonEUCounterpartiesInputDto!
+}
+
+input BankingBookSchemaDto {
+  financialAssets: [BBFinancialAssetInputDto!]
+  formData: BBFormDataInputDto
+  amountAvailable: BBAmountAvailableInputDto
+}
+
+input CBAmountAvailableInputDto {
+  nonNFRD: Float!
+  other: Float!
+}
+
+input CBFinancialAssetInputDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  reportRequested: Boolean
+  financialServiceType: FinancialServiceTypeEnum
+  income: FinancialsInputDto
+}
+
+input CBFormDataInputDto {
+  totalRevenue: FinancialsInputDto!
+  counterpartiesIncome: FinancialsInputDto!
+}
+
+input CommissionBookInputDto {
+  financialAssets: [CBFinancialAssetInputDto!]
+  formData: CBFormDataInputDto
+  amountAvailable: CBAmountAvailableInputDto
+}
+
+input OBBAmountAvailableInputDto {
+  total: FinancialsInputDto!
+  debtSecurity: FinancialsInputDto!
+  equityInstruments: FinancialsInputDto!
+}
+
+input OffBalanceBookFinancialAssetInputDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  reportRequested: Boolean
+  grossAmount: FinancialsInputDto!
+  guaranteeIsin: String
+}
+
+input offBalanceBookAumInputDto {
+  total: FinancialsInputDto!
+  debtSecurity: FinancialsInputDto!
+  equityInstruments: FinancialsInputDto!
+}
+
+input OffBalanceBookFormDataInputDto {
+  financialGuarantees: FinancialsInputDto!
+  totalAuM: offBalanceBookAumInputDto!
+}
+
+input OffBalanceBookInputDto {
+  amountAvailable: OBBAmountAvailableInputDto
+  financialAssets: [OffBalanceBookFinancialAssetInputDto!]
+  formData: OffBalanceBookFormDataInputDto
+}
+
+input TBAmountAvailableInputDto {
+  nonNFRD: BaseAmountInputDto!
+  other: Float!
+}
+
+input TBFinancialAssetInputDto {
+  financialAssetId: String!
+  financialAssetType: FinancialAssetType!
+  financialAssetTypeName: String
+  counterpartyType: CounterPartyType
+  counterpartyName: String
+  counterpartyId: String
+  country: CountryCodesComponentEnum
+  reportRequested: Boolean
+}
+
+input EngineFileLinkInputDto {
+  _id: String!
+  accountId: String
+  mime: String!
+  fieldName: String!
+  indication: String
+  createdAt: DateTime!
+}
+
+input TradingBookFormAnswerInputDto {
+  less: AnswerEnum!
+  exceeds: AnswerEnum!
+}
+
+input TBTotalCoveredAssetInputDto {
+  total: FinancialsInputDto!
+  counterpartiesNoNfrd: FinancialsInputDto!
+  debtSecurity: FinancialsInputDto!
+  equityInstruments: FinancialsInputDto!
+}
+
+input TBFormDataInputDto {
+  trends: String
+  investmentPolicy: String
+  potentialLimits: String
+  totalCoveredAsset: TBTotalCoveredAssetInputDto
+  accountingDate: DateTime
+  files: [EngineFileLinkInputDto!]
+  institutionSize: TradingBookFormAnswerInputDto!
+  institutionSizeMarketRisk: TradingBookFormAnswerInputDto!
+}
+
+input TradingOutputDto {
+  financialAssets: [TBFinancialAssetInputDto!]
+  formData: TBFormDataInputDto
+  amountAvailable: TBAmountAvailableInputDto
+}
+
+input CIProfileInputDto {
+  name: String!
+  country: CurrencyTypeEnum!
+  lei: String!
+  size: String!
+  currency: CurrencyTypeEnum
+  totalAssets: FinancialsInputDto
+  banksExposure: FinancialsInputDto
+  totalSovereignExposures: FinancialsInputDto
+  totalTradingBook: FinancialsInputDto
+  year: String!
+  bankingBook: BankingBookSchemaDto
+  tradingBook: TradingOutputDto
+  offBalanceBook: OffBalanceBookInputDto
+  commissionBook: CommissionBookInputDto
+}
+
+input CreditInstInputDto {
+  _id: String!
+}
+
+type Query {
+  """get one credit institution"""
+  creditsInstitution(
+    """id of credit institution"""
+    id: String!
+  ): CreditInstitutionDto
+}
+
+type Mutation {
+  """create credit institution"""
+  createCreditInstitution(input: NewCreditInstitutionProfileInput!): CreditInstitutionDto!
+
+  """edit profile of credit institution"""
+  editCreditInstitutionProfile(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: EditCreditInstitionProfileInput!
+  ): CreditInstitutionDto!
+
+  """create/update banking book of profile"""
+  handleBankingBook(
+    """if of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: BankingBookInput!
+  ): CIProfileDto!
+
+  """create/update trading book of profile"""
+  handleTradingBook(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: TradingBookInput!
+  ): CIProfileDto!
+
+  """create/update off-balance book of profile"""
+  handleOffBalanceBook(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: OffBalanceBookInput!
+  ): CIProfileDto!
+
+  """create/update commission book of profile"""
+  handleCommissionBook(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: CommissionBookInput!
+  ): CIProfileDto!
+
+  """add financial asset to banking book"""
+  bankingBookAddFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: BBFinancialAssetInputDto!
+  ): CIProfileDto!
+
+  """add financial asset to trading book"""
+  tradingBookAddFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: TBFinancialAssetInputDto!
+  ): CIProfileDto!
+
+  """add financial asset to off-balance book"""
+  offBalanceBookAddFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: OffBalanceBookFinancialAssetInputDto!
+  ): CIProfileDto!
+
+  """add financial asset to commission book"""
+  commissionBookAddFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+    input: CBFinancialAssetInputDto!
+  ): CIProfileDto!
+
+  """edit financial asset to banking book"""
+  bankingBookEditFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+
+    """id of financial asset"""
+    financialAssetId: String!
+    input: BankingBookFinancialAssetInput!
+  ): CIProfileDto!
+
+  """edit financial asset to trading book"""
+  tradingBookEditFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+
+    """id of financial asset"""
+    financialAssetId: String!
+    input: TradingBookFinancialAssetInput!
+  ): CIProfileDto!
+
+  """edit financial asset to commission book"""
+  commissionBookEditFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+
+    """id of financial asset"""
+    financialAssetId: String!
+    input: CommissionBookFinancialAssetInput!
+  ): CIProfileDto!
+
+  """edit financial asset to off-balance book"""
+  offBalanceBookEditFinancialAsset(
+    """id of credit institution"""
+    id: String!
+
+    """year of profile"""
+    year: String!
+
+    """id of financial asset"""
+    financialAssetId: String!
+    input: OffBalanceBookFinancialAssetInput!
+  ): CIProfileDto!
+}
+
+input NewCreditInstitutionProfileInput {
+  name: String!
+  country: CurrencyTypeEnum!
+  lei: String!
+  size: String!
+  currency: CurrencyTypeEnum
+  totalAssets: FinancialsInputDto
+  banksExposure: FinancialsInputDto
+  totalSovereignExposures: FinancialsInputDto
+  totalTradingBook: FinancialsInputDto
+  year: String!
+}
+
+input EditCreditInstitionProfileInput {
+  name: String!
+  country: CurrencyTypeEnum!
+  lei: String!
+  size: String!
+  currency: CurrencyTypeEnum
+  totalAssets: FinancialsInputDto
+  banksExposure: FinancialsInputDto
+  totalSovereignExposures: FinancialsInputDto
+  totalTradingBook: FinancialsInputDto
+}
+
+input BankingBookInput {
+  householdsLoans: FinancialsInputDto!
+  governmentFinancing: FinancialsInputDto!
+  interbankLoans: FinancialsInputDto!
+  cashAssets: FinancialsInputDto!
+  otherAssets: FinancialsInputDto!
+  derivatives: FinancialsInputDto!
+  nonNfrd: NonEUCounterpartiesInputDto!
+  nonEu: NonEUCounterpartiesInputDto!
+}
+
+input TradingBookInput {
+  institutionSize: TradingBookFormAnswerInputDto!
+  institutionSizeMarketRisk: TradingBookFormAnswerInputDto!
+}
+
+input OffBalanceBookInput {
+  financialGuarantees: FinancialsInputDto!
+  aum: offBalanceBookAumInputDto!
+}
+
+input CommissionBookInput {
+  fAndCRevenue: CBfAndCRevenueInputDto!
+}
+
+input CBfAndCRevenueInputDto {
+  total: FinancialsInputDto!
+  counterpartiesNoNfrd: FinancialsInputDto!
+}
+
+input BankingBookFinancialAssetInput {
+  grossAmount: FinancialsInputDto!
+}
+
+input TradingBookFinancialAssetInput {
+  purchaseAmount: FinancialsInputDto!
+  salesAmount: FinancialsInputDto!
+}
+
+input CommissionBookFinancialAssetInput {
+  income: CommissionBookInputDto!
+}
+
+input OffBalanceBookFinancialAssetInput {
+  grossAmount: FinancialsInputDto!
+  guaranteeIsin: String!
+}
